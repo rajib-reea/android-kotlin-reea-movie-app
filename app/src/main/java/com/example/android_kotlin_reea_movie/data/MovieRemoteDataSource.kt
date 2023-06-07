@@ -11,18 +11,17 @@ internal sealed class MovieRemoteDataSource<T>(val data:  T?=null, val message:S
 
     companion object{
         suspend fun <T>  getMovies(fn: suspend ()->Response<T>): MovieRemoteDataSource<T>{
-             try {
+            return  try {
                 val response=fn();
                 val body=response.body()
                 if (response.isSuccessful) {
                     return Success<T>(data = body)
                 }
+                return Failure<T>(data=null, message="Error happened.")
             }catch (e: Exception){
                 Timber.e("Request Failed and the Error Message: $e")
                 return Failure<T>(data=null, message="Error happened.")
             }
-
-        return TODO("Provide the return value")
        }
     }
 }
