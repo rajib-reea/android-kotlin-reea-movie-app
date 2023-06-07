@@ -1,5 +1,6 @@
 package com.example.android_kotlin_reea_movie.data;
 
+import com.skydoves.sandwich.ApiResponse
 import retrofit2.Response
 import timber.log.Timber
 import java.lang.Exception
@@ -10,9 +11,9 @@ internal sealed class MovieRemoteDataSource<T>(val data:  T?=null, val message:S
     class Failure<T>(data: T?, message: String?) : MovieRemoteDataSource<T>(data=data, message=message)
 
     companion object{
-        suspend fun <T>  getMovies(fn: suspend ()->Response<T>): MovieRemoteDataSource<T>{
+        suspend fun <T>  getMovies(fn: suspend (searchText:String, apiKey: String)->Response<T>): MovieRemoteDataSource<T>{
             return  try {
-                val response=fn();
+                val response=fn("full", "9ce77d36");
                 val body=response.body()
                 if (response.isSuccessful) {
                     return Success<T>(data = body)
