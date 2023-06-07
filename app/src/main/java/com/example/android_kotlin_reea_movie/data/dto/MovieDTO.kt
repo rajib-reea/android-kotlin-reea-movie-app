@@ -1,0 +1,28 @@
+package com.example.android_kotlin_reea_movie.data.dto
+
+internal data class MovieDTO(
+    val title: String,
+    val year: String,
+    val rated: String,
+    val released: String,
+    val runtime: String,
+    val genre: String,
+    val director: String,
+    val writer: String,
+    val actors: String,
+    val plot: String,
+    val language: String,
+    val country: String,
+    val poster: String,
+    val ratings: List<RatingDTO>,
+    val meta_score: String,
+    val imdb_rating: String,
+    val imdb_votes: String,
+    val imdb_id: String,
+    val type: String,
+    val dvd: String,
+    val box_office: String,
+    val production: String,
+    val website: String,
+    val response: String,
+)
