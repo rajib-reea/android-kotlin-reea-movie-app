@@ -11,11 +11,16 @@ internal sealed class MovieRemoteDataSource<T>(val data:  T?=null, val message:S
     class Failure<T>(data: T?, message: String?) : MovieRemoteDataSource<T>(data=data, message=message)
 
     companion object{
-        suspend fun <T>  getMovies(fn: suspend (searchText:String, apiKey: String)->Response<T>): MovieRemoteDataSource<T>{
+        //requesting with query
+       // suspend fun <T>  getMovies(fn: suspend (searchtext: String, apiKey: String)->Response<T>): MovieRemoteDataSource<T>{
+       suspend fun <T>  getMovies(fn: suspend ()->Response<T>): MovieRemoteDataSource<T>{
             return  try {
-                val response=fn("full", "9ce77d36");
-                val body=response.body()
+                //requesting with query
+                //val response=fn("full", "9ce77d36");
+                val response=fn();
+
                 if (response.isSuccessful) {
+                    val body=response.body()
                     return Success<T>(data = body)
                 }
                 return Failure<T>(data=null, message="Error happened.")

@@ -8,6 +8,9 @@ import retrofit2.http.Query
 internal interface MovieService {
     @GET("/")
     suspend fun  getMovies(
+    ): Response<MovieListDTO>
+
+    suspend fun  getMoviesWithQueryParameters(
         @Query("s") searchText:String,
         @Query("api_key") apiKey: String
     ): Response<MovieListDTO>
