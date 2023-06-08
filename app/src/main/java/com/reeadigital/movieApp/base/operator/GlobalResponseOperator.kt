@@ -1,5 +1,6 @@
 package com.reeadigital.movieApp.base.operator
 
+import android.app.Activity
 import android.app.Application
 import android.widget.Toast
 import com.reeadigital.movieApp.base.mapper.ErrorResponseMapper
