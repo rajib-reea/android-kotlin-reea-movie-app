@@ -1,15 +1,16 @@
 package com.reeadigital.movieApp
 
-import android.app.Application
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.reeadigital.movieApp.base.operator.GlobalResponseOperator
 import com.skydoves.sandwich.SandwichInitializer
-import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.android.AndroidEntryPoint
 
-@HiltAndroidApp
-class MovieApplication : Application() {
-
-    override fun onCreate() {
-        super.onCreate()
-        SandwichInitializer.sandwichOperators+=GlobalResponseOperator<Any>(this)
+@AndroidEntryPoint
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        SandwichInitializer.sandwichOperators+= GlobalResponseOperator<Any>(this)
     }
 }

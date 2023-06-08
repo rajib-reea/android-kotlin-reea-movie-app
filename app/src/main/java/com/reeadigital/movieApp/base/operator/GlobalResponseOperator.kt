@@ -14,7 +14,7 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 
 class GlobalResponseOperator<T> constructor(
-    private val application: Application
+    private val activity: Activity
 ) : ApiResponseSuspendOperator<T>() {
 
     override suspend fun onSuccess(apiResponse: ApiResponse.Success<T>) = Unit
@@ -45,6 +45,7 @@ class GlobalResponseOperator<T> constructor(
         }
 
     private fun toast(message: String) {
-        Toast.makeText(application, message, Toast.LENGTH_SHORT).show()
+      //  Toast.makeText(application, message, Toast.LENGTH_SHORT).show()
+        Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 }
