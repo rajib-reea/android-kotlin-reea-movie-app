@@ -14,21 +14,18 @@
  * limitations under the License.
  */
 
-package com.reeadigital.movieapp
+package com.reeadigital.movieapp.ui.theme
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import com.reeadigital.movieapp.ui.ReeaMovieApp
-import com.reeadigital.movieapp.ui.theme.ReeaMovieTheme
+import androidx.compose.material.Typography
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.sp
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            ReeaMovieTheme {
-                ReeaMovieApp()
-            }
-        }
-    }
-}
+val Typography = Typography(
+    body1 = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.Normal,
+        fontSize = 16.sp
+    )
+)

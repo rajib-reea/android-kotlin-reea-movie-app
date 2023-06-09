@@ -14,21 +14,11 @@
  * limitations under the License.
  */
 
-package com.reeadigital.movieapp
+package com.reeadigital.movieapp.ui.theme
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import com.reeadigital.movieapp.ui.ReeaMovieApp
-import com.reeadigital.movieapp.ui.theme.ReeaMovieTheme
+import androidx.compose.ui.graphics.Color
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            ReeaMovieTheme {
-                ReeaMovieApp()
-            }
-        }
-    }
-}
+val Purple200 = Color(0xFFBB86FC)
+val Purple500 = Color(0xFF6200EE)
+val Purple700 = Color(0xFF3700B3)
+val Teal200 = Color(0xFF03DAC5)

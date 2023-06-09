@@ -14,21 +14,14 @@
  * limitations under the License.
  */
 
-package com.reeadigital.movieapp
+package com.reeadigital.movieapp.ui.theme
 
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import com.reeadigital.movieapp.ui.ReeaMovieApp
-import com.reeadigital.movieapp.ui.theme.ReeaMovieTheme
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Shapes
+import androidx.compose.ui.unit.dp
 
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            ReeaMovieTheme {
-                ReeaMovieApp()
-            }
-        }
-    }
-}
+val Shapes = Shapes(
+    small = RoundedCornerShape(4.dp),
+    medium = RoundedCornerShape(4.dp),
+    large = RoundedCornerShape(0.dp)
+)
