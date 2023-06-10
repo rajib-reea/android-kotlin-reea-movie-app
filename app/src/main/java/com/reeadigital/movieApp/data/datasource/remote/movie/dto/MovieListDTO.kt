@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class MovieListDTO(
-    val Source:List<MovieDetailDTO>?
+    val Source:List<MovieDTO>?
 )
