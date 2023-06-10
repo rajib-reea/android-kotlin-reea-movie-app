@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.reeadigital.movieapp.ui.screens.movie_detail
+package com.reeadigital.movieapp.ui.screens.movie
 
 
 import androidx.compose.foundation.layout.Box

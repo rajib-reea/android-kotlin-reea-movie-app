@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.reeadigital.movieapp.ui.screens.movie_detail
+package com.reeadigital.movieapp.ui.screens.movie
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,7 +24,6 @@ import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieListDTO
 import com.reeadigital.movieapp.data.repository.MovieRepository
 import com.reeadigital.movieapp.base.UIState
 import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieIDDataDTO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import okio.IOException
