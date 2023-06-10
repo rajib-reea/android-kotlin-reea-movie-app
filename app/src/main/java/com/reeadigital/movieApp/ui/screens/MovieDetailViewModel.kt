@@ -21,10 +21,15 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.reeadigital.movieapp.data.repository.MovieRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import java.io.IOException
+import javax.inject.Inject
 
-class MovieDetailViewModel : ViewModel() {
+@HiltViewModel
+class MovieDetailViewModel  @Inject constructor(
+    private val movieRepository: MovieRepository
+) : ViewModel() {
         var movieDetailUIState: MovieDetailUIState by mutableStateOf(MovieDetailUIState.Loading)
         private set
     init {
@@ -33,7 +38,7 @@ class MovieDetailViewModel : ViewModel() {
     private fun getMovieDetail() =
         viewModelScope.launch {
              movieDetailUIState= try {
-                val movieDetail = MovieRepository.getMovieDetail("tt3896198")
+                val movieDetail = movieRepository.getMovieDetail("tt3896198")
                 MovieDetailUIState.Success(movieDetail)
             }catch(e: IOException){
                 MovieDetailUIState.Error
