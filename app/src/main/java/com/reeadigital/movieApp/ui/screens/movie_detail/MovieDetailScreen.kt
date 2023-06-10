@@ -37,7 +37,7 @@ fun MovieDetailScreen(
 ) {
     when (movieDetailUIState) {
         is MovieDetailUIState.Loading -> LoadingScreen(modifier)
-        is MovieDetailUIState.Success -> ResultScreen(movieDetailUIState.movieDetail, modifier)
+        is MovieDetailUIState.Success -> ResultScreen(movieDetailUIState.movieDetail.toString(), modifier)
         is MovieDetailUIState.Error -> ErrorScreen(modifier)
     }
 }

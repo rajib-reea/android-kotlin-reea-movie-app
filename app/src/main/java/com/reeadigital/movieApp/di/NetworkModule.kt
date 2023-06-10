@@ -1,11 +1,14 @@
 package com.reeadigital.movieapp.di
 
+import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
 import com.reeadigital.movieapp.config.Configuration
 import com.reeadigital.movieapp.data.datasource.remote.movie.MovieApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.serialization.json.Json
+import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -32,8 +35,11 @@ object NetworkModule {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(Configuration.BASE_URL)
-            .addConverterFactory(ScalarsConverterFactory.create())
-           // .addConverterFactory(GsonConverterFactory.create())
+            //.addConverterFactory(ScalarsConverterFactory.create())
+            .addConverterFactory(Json{
+                isLenient=true
+                ignoreUnknownKeys=true
+            }.asConverterFactory("application/json".toMediaType()))
             .build()
     }
 
