@@ -21,6 +21,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -28,17 +29,35 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.reeadigital.movieapp.R
+import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
+import com.reeadigital.movieapp.data.repository.UIState
 import com.reeadigital.movieapp.ui.theme.ReeaMovieTheme
 
 @Composable
 fun MovieDetailScreen(
-    movieDetailUIState: MovieDetailUIState,
+    movieDetailUIState: UIState<MovieDetailDTO>,
     modifier: Modifier = Modifier
 ) {
     when (movieDetailUIState) {
-        is MovieDetailUIState.Loading -> LoadingScreen(modifier)
-        is MovieDetailUIState.Success -> ResultScreen(movieDetailUIState.movieDetail.toString(), modifier)
-        is MovieDetailUIState.Error -> ErrorScreen(modifier)
+        is UIState.Loading -> LoadingScreen(modifier)
+        is UIState.Success -> ResultScreen(movieDetailUIState.data.toString(), modifier)
+        is UIState.Error -> ErrorScreen(modifier)
+    }
+}
+
+@Composable
+fun MovieListScreen(
+    movieDetailUIState: MutableState<UIState<MovieDetailDTO>?>,
+    modifier: Modifier = Modifier
+) {
+    movieDetailUIState.value?.let { it ->
+        if (it is UIState.Loading) {
+            LoadingScreen(modifier)
+        }else if(it is UIState.Success<MovieDetailDTO>){
+            ResultScreen(it.data.toString(), modifier)
+        }else if(it is UIState.Error){
+            ErrorScreen(modifier)
+        }
     }
 }
 

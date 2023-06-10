@@ -29,7 +29,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.reeadigital.movieapp.R
 import com.reeadigital.movieapp.ui.screens.movie_detail.MovieDetailScreen
-import com.reeadigital.movieapp.ui.screens.movie_detail.MovieDetailViewModel
+import com.reeadigital.movieapp.ui.screens.movie_detail.MovieViewModel
 
 @Composable
 fun ReeaMovieApp(modifier: Modifier = Modifier) {
@@ -43,9 +43,10 @@ fun ReeaMovieApp(modifier: Modifier = Modifier) {
                 .padding(it),
             color = MaterialTheme.colors.background
         ) {
-            val movieDetailViewModel: MovieDetailViewModel = viewModel()
+            val movieViewModel: MovieViewModel = viewModel()
             MovieDetailScreen(
-                movieDetailUIState = movieDetailViewModel.movieDetailUIState
+                movieDetailUIState = movieViewModel.movieDetailUIState
+               // movieDetailUIState = movieViewModel.movieListUIState
             )
         }
     }

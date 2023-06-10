@@ -11,19 +11,35 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Converter
 import retrofit2.Retrofit
-import retrofit2.converter.scalars.ScalarsConverterFactory
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
+
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor{
         val loggingInterceptor = HttpLoggingInterceptor()
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+        return loggingInterceptor
+    }
+
+    @Provides
+    @Singleton
+    fun provideConvertorFactory():Converter.Factory{
+        return Json{
+            isLenient=true
+            ignoreUnknownKeys=true
+        }.asConverterFactory("application/json".toMediaType())
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .build()
@@ -31,15 +47,11 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    fun provideRetrofit(okHttpClient: OkHttpClient, converterFactory: Converter.Factory): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(Configuration.BASE_URL)
-            //.addConverterFactory(ScalarsConverterFactory.create())
-            .addConverterFactory(Json{
-                isLenient=true
-                ignoreUnknownKeys=true
-            }.asConverterFactory("application/json".toMediaType()))
+            .addConverterFactory(converterFactory)
             .build()
     }
 
