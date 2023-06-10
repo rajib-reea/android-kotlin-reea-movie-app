@@ -20,10 +20,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
 import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieListDTO
 import com.reeadigital.movieapp.data.repository.MovieRepository
 import com.reeadigital.movieapp.base.UIState
+import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
+import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieIDDataDTO
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import okio.IOException
@@ -42,7 +43,7 @@ class MovieViewModel  @Inject constructor(
         getMovieList()
         getMovieDetail()
     }
-    
+
     private fun getMovieDetail() = viewModelScope.launch {
         movieDetailUIState= try {
             val movieDetail = movieRepository.getMovieDetail("tt3896198")

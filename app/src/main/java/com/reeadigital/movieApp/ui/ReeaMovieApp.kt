@@ -45,8 +45,8 @@ fun ReeaMovieApp(modifier: Modifier = Modifier) {
             color = MaterialTheme.colors.background
         ) {
             val movieViewModel: MovieViewModel = viewModel()
-            //MovieDetailScreen( movieDetailUIState = movieViewModel.movieDetailUIState )
-            MovieListScreen(movieListUIState = movieViewModel.movieListUIState)
+            MovieDetailScreen( movieDetailUIState = movieViewModel.movieDetailUIState )
+            //MovieListScreen(movieListUIState = movieViewModel.movieListUIState)
         }
     }
 }

@@ -1,12 +1,9 @@
 package com.reeadigital.movieapp.data.repository
 
-//import com.reeadigital.movieapp.data.datasource.remote.MovieApi
 import com.reeadigital.movieapp.data.datasource.remote.movie.MovieApiService
 import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
 import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieListDTO
 import dagger.hilt.android.scopes.ViewModelScoped
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 @ViewModelScoped
@@ -14,7 +11,6 @@ class MovieRepository @Inject constructor(
     private val movieApi: MovieApiService
     ){
         suspend fun getMovieDetail(detailID: String): MovieDetailDTO{
-
             return movieApi.getMovieDetail(detailID, "97edfc1b")
         }
 

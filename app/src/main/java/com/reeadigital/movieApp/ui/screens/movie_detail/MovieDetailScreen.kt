@@ -17,8 +17,8 @@ package com.reeadigital.movieapp.ui.screens.movie_detail
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
 import com.reeadigital.movieapp.base.UIState
+import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
 import com.reeadigital.movieapp.ui.screens.LoadingScreen
 import com.reeadigital.movieapp.ui.screens.ResultScreen
 
