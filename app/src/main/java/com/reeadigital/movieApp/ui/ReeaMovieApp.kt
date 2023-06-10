@@ -28,8 +28,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.reeadigital.movieapp.R
-import com.reeadigital.movieapp.ui.screens.MovieDetailScreen
-import com.reeadigital.movieapp.ui.screens.MovieDetailViewModel
+import com.reeadigital.movieapp.ui.screens.movie_detail.MovieDetailScreen
+import com.reeadigital.movieapp.ui.screens.movie_detail.MovieDetailViewModel
 
 @Composable
 fun ReeaMovieApp(modifier: Modifier = Modifier) {

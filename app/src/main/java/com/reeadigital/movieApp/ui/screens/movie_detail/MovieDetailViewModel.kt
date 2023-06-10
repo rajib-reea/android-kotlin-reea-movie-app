@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.reeadigital.movieapp.ui.screens
+package com.reeadigital.movieapp.ui.screens.movie_detail
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -39,9 +39,9 @@ class MovieDetailViewModel  @Inject constructor(
         viewModelScope.launch {
              movieDetailUIState= try {
                 val movieDetail = movieRepository.getMovieDetail("tt3896198")
-                MovieDetailUIState.Success(movieDetail)
+                 MovieDetailUIState.Success(movieDetail)
             }catch(e: IOException){
-                MovieDetailUIState.Error
+                 MovieDetailUIState.Error
             }
 
             }

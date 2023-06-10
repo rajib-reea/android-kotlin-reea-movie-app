@@ -1,4 +1,4 @@
-package com.reeadigital.movieapp.ui.screens
+package com.reeadigital.movieapp.ui.screens.movie_detail
 
 interface MovieDetailUIState {
     data class Success(val movieDetail: String) : MovieDetailUIState

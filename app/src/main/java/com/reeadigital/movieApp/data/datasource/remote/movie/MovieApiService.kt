@@ -1,4 +1,4 @@
-package com.reeadigital.movieapp.data.datasource.remote
+package com.reeadigital.movieapp.data.datasource.remote.movie
 
 import retrofit2.http.GET
 import retrofit2.http.Query

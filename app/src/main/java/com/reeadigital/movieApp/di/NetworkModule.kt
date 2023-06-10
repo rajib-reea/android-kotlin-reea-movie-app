@@ -1,7 +1,7 @@
 package com.reeadigital.movieapp.di
 
 import com.reeadigital.movieapp.config.Configuration
-import com.reeadigital.movieapp.data.datasource.remote.MovieApiService
+import com.reeadigital.movieapp.data.datasource.remote.movie.MovieApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

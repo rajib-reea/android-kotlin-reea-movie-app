@@ -1,8 +1,7 @@
 package com.reeadigital.movieapp.data.repository
 
 //import com.reeadigital.movieapp.data.datasource.remote.MovieApi
-import com.reeadigital.movieapp.data.datasource.remote.MovieApiService
-import dagger.hilt.android.AndroidEntryPoint
+import com.reeadigital.movieapp.data.datasource.remote.movie.MovieApiService
 import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject
 
