@@ -1,6 +1,7 @@
 package com.reeadigital.movieapp.data.datasource.remote.movie
 
 import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
+import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieListDTO
 import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -16,7 +17,7 @@ interface MovieApiService {
         suspend fun getMovieList(
                 @Query("s") s: String,
                 @Query("apikey") apiKey : String
-        ): List<MovieDetailDTO>
+        ): MovieListDTO
 }
 
 

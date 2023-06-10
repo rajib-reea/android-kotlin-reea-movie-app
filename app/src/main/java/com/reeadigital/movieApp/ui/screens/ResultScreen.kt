@@ -13,23 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.reeadigital.movieapp.ui.screens.movie_detail
+package com.reeadigital.movieapp.ui.screens
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
-import com.reeadigital.movieapp.base.UIState
-import com.reeadigital.movieapp.ui.screens.LoadingScreen
-import com.reeadigital.movieapp.ui.screens.ResultScreen
 
 @Composable
-fun MovieDetailScreen(
-    movieDetailUIState: UIState<MovieDetailDTO>,
-    modifier: Modifier = Modifier
-) {
-    when (movieDetailUIState) {
-        is UIState.Loading -> LoadingScreen(modifier)
-        is UIState.Success -> ResultScreen(movieDetailUIState.data.toString(), modifier)
-        is UIState.Error -> ErrorScreen(modifier)
+fun ResultScreen(resultString: String, modifier: Modifier = Modifier) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier.fillMaxSize()
+    ) {
+        Text(resultString)
     }
 }

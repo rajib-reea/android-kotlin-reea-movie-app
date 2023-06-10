@@ -1,7 +1,4 @@
-package com.reeadigital.movieapp.data.repository
-
-import androidx.compose.runtime.MutableState
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
+package com.reeadigital.movieapp.base
 
 sealed class UIState<out T>{
     data class Success<out T>(val data: T) : UIState<T>()

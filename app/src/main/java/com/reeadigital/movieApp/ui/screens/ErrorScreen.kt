@@ -15,21 +15,22 @@
  */
 package com.reeadigital.movieapp.ui.screens.movie_detail
 
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
-import com.reeadigital.movieapp.base.UIState
-import com.reeadigital.movieapp.ui.screens.LoadingScreen
-import com.reeadigital.movieapp.ui.screens.ResultScreen
+import androidx.compose.ui.res.stringResource
+import com.reeadigital.movieapp.R
 
 @Composable
-fun MovieDetailScreen(
-    movieDetailUIState: UIState<MovieDetailDTO>,
-    modifier: Modifier = Modifier
-) {
-    when (movieDetailUIState) {
-        is UIState.Loading -> LoadingScreen(modifier)
-        is UIState.Success -> ResultScreen(movieDetailUIState.data.toString(), modifier)
-        is UIState.Error -> ErrorScreen(modifier)
+fun ErrorScreen(modifier: Modifier = Modifier) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier.fillMaxSize()
+    ) {
+        Text(stringResource(R.string.loading_failed))
     }
 }

@@ -15,17 +15,16 @@
  */
 package com.reeadigital.movieapp.ui.screens.movie_detail
 
-import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
+import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieListDTO
 import com.reeadigital.movieapp.data.repository.MovieRepository
-import com.reeadigital.movieapp.data.repository.UIState
+import com.reeadigital.movieapp.base.UIState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import okio.IOException
 import javax.inject.Inject
@@ -34,13 +33,13 @@ import javax.inject.Inject
 class MovieViewModel  @Inject constructor(
     private val movieRepository: MovieRepository
 ) : ViewModel() {
-        // val movieDetailUIState: MutableState<UIState<MovieDetailDTO>?>  =mutableStateOf(UIState.Loading)
-    //var movieListUIState: UIState<Flow<List<MovieDetailDTO>>> by  mutableStateOf(UIState.Loading)
+    var movieListUIState: UIState<MovieListDTO> by mutableStateOf(UIState.Loading)
+    private set
     var movieDetailUIState: UIState<MovieDetailDTO> by mutableStateOf(UIState.Loading)
-
-           // private set
+    private set
     init {
         getMovieDetail()
+        //getMovieList()
     }
     private fun getMovieDetail() = viewModelScope.launch {
         movieDetailUIState= try {
@@ -51,14 +50,14 @@ class MovieViewModel  @Inject constructor(
         }
     }
 
-//    private fun getMovieList() =
-//        viewModelScope.launch {
-//            movieListUIState= try {
-//                val movieList= movieRepository.getMovieList("open")
-//                UIState.Success(movieList);
-//            }catch(e: IOException){
-//                UIState.Error
-//            }
-//        }
+    private fun getMovieList() =
+        viewModelScope.launch {
+            movieListUIState= try {
+                val movieList= movieRepository.getMovieList("open")
+                UIState.Success(movieList);
+            }catch(e: IOException){
+                UIState.Error(e)
+            }
+        }
 }
 

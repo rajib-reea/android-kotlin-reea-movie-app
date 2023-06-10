@@ -17,19 +17,20 @@ package com.reeadigital.movieapp.ui.screens.movie_detail
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
+import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieListDTO
 import com.reeadigital.movieapp.base.UIState
 import com.reeadigital.movieapp.ui.screens.LoadingScreen
 import com.reeadigital.movieapp.ui.screens.ResultScreen
 
 @Composable
-fun MovieDetailScreen(
-    movieDetailUIState: UIState<MovieDetailDTO>,
+fun MovieListScreen(
+    movieListUIState: UIState<MovieListDTO>,
     modifier: Modifier = Modifier
 ) {
-    when (movieDetailUIState) {
+
+    when (movieListUIState) {
         is UIState.Loading -> LoadingScreen(modifier)
-        is UIState.Success -> ResultScreen(movieDetailUIState.data.toString(), modifier)
+        is UIState.Success -> ResultScreen(movieListUIState.data.toString(), modifier)
         is UIState.Error -> ErrorScreen(modifier)
     }
 }
