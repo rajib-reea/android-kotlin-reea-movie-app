@@ -1,5 +1,6 @@
 package com.reeadigital.movieapp.di
 
+import com.reeadigital.movieapp.config.Configuration
 import com.reeadigital.movieapp.data.datasource.remote.MovieApiService
 import dagger.Module
 import dagger.Provides
@@ -18,8 +19,9 @@ object NetworkModule {
     @Singleton
     fun provideOkHttpClient(): OkHttpClient {
         val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.HEADERS)
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
         return OkHttpClient.Builder()
-            // .addInterceptor(RequestInterceptor())
             .addInterceptor(loggingInterceptor)
             .build()
     }
@@ -29,10 +31,9 @@ object NetworkModule {
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://www.omdbapi.com")
+            .baseUrl(Configuration.BASE_URL)
             .addConverterFactory(ScalarsConverterFactory.create())
            // .addConverterFactory(GsonConverterFactory.create())
-             //   .addCallAdapterFactory(ApiResponseCallAdapterFactory.create(MainScope()))
             .build()
     }
 
