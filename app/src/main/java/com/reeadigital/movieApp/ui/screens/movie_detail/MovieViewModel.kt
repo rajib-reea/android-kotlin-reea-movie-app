@@ -37,10 +37,12 @@ class MovieViewModel  @Inject constructor(
     private set
     var movieDetailUIState: UIState<MovieDetailDTO> by mutableStateOf(UIState.Loading)
     private set
+
     init {
-        //getMovieDetail()
         getMovieList()
+        getMovieDetail()
     }
+    
     private fun getMovieDetail() = viewModelScope.launch {
         movieDetailUIState= try {
             val movieDetail = movieRepository.getMovieDetail("tt3896198")
