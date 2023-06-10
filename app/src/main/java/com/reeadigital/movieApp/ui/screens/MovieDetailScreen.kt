@@ -15,35 +15,65 @@
  */
 package com.reeadigital.movieapp.ui.screens
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import com.reeadigital.movieapp.R
 import com.reeadigital.movieapp.ui.theme.ReeaMovieTheme
 
 @Composable
 fun MovieDetailScreen(
-    movieDetailUIState: String,
+    movieDetailUIState: MovieDetailUIState,
     modifier: Modifier = Modifier
 ) {
-    ResultScreen(movieDetailUIState, modifier)
+    when (movieDetailUIState) {
+        is MovieDetailUIState.Loading -> LoadingScreen(modifier)
+        is MovieDetailUIState.Success -> ResultScreen(movieDetailUIState.movieDetail, modifier)
+        is MovieDetailUIState.Error -> ErrorScreen(modifier)
+    }
 }
 
-/**
- * The home screen displaying result of fetching photos.
- */
 @Composable
-fun ResultScreen(movieDetailUIState: String, modifier: Modifier = Modifier) {
+fun LoadingScreen(modifier: Modifier = Modifier) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = modifier.fillMaxSize()
     ) {
-        Text(movieDetailUIState)
+        Image(
+            modifier = Modifier.size(200.dp),
+            painter = painterResource(R.drawable.loading_img),
+            contentDescription = stringResource(R.string.loading)
+        )
+    }
+}
+
+
+@Composable
+fun ErrorScreen(modifier: Modifier = Modifier) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier.fillMaxSize()
+    ) {
+        Text(stringResource(R.string.loading_failed))
+    }
+}
+
+@Composable
+fun ResultScreen(movieDetailUIString: String, modifier: Modifier = Modifier) {
+    Box(
+        contentAlignment = Alignment.Center,
+        modifier = modifier.fillMaxSize()
+    ) {
+        Text(movieDetailUIString)
     }
 }
 

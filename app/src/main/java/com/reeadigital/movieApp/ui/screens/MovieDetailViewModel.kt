@@ -20,19 +20,25 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.reeadigital.movieapp.data.datasource.remote.MovieApi
+import com.reeadigital.movieapp.data.repository.MovieRepository
 import kotlinx.coroutines.launch
+import java.io.IOException
 
 class MovieDetailViewModel : ViewModel() {
-    var movieDetailUIState: String by mutableStateOf("")
+        var movieDetailUIState: MovieDetailUIState by mutableStateOf(MovieDetailUIState.Loading)
         private set
     init {
         getMovieDetail()
     }
-    private fun getMovieDetail() {
+    private fun getMovieDetail() =
         viewModelScope.launch {
-            val listResult = MovieApi.retrofitService.getMovieDetail("tt3896198", "97edfc1b")
-            movieDetailUIState = listResult
+             movieDetailUIState= try {
+                val movieDetail = MovieRepository.getMovieDetail("tt3896198")
+                MovieDetailUIState.Success(movieDetail)
+            }catch(e: IOException){
+                MovieDetailUIState.Error
+            }
+
+            }
         }
-    }
-}
+
