@@ -20,23 +20,24 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieListDTO
-import com.reeadigital.movieapp.data.repository.MovieRepository
 import com.reeadigital.movieapp.base.UIState
 import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
+import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieListDTO
+import com.reeadigital.movieapp.domain.MovieUseCase.MovieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import okio.IOException
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieViewModel  @Inject constructor(
-    private val movieRepository: MovieRepository
+    private val movieUseCase: MovieUseCase
 ) : ViewModel() {
-    var movieListUIState: UIState<MovieListDTO> by mutableStateOf(UIState.Loading)
+   var movieListUIState: UIState<MovieListDTO> by mutableStateOf(UIState.Loading)
     private set
     var movieDetailUIState: UIState<MovieDetailDTO> by mutableStateOf(UIState.Loading)
-    private set
+   private set
 
     init {
         getMovieList()
@@ -45,18 +46,24 @@ class MovieViewModel  @Inject constructor(
 
     private fun getMovieDetail() = viewModelScope.launch {
         movieDetailUIState= try {
-            val movieDetail = movieRepository.getMovieDetail("tt3896198")
+            val movieDetailFlow=movieUseCase.getMovieDetail("tt3896198")
+           val md= movieDetailFlow.toList()
+            val movieDetail= md[0]
             UIState.Success(movieDetail)
         }catch(e: IOException){
             UIState.Error(e)
         }
     }
 
+
+
     private fun getMovieList() =
         viewModelScope.launch {
             movieListUIState= try {
-                val movieList= movieRepository.getMovieList("open")
-                UIState.Success(movieList);
+                val movieListFlow= movieUseCase.getMovieList("open")
+                val ml= movieListFlow.toList()
+                val movieList= ml[0]
+                UIState.Success(movieList)
             }catch(e: IOException){
                 UIState.Error(e)
             }
