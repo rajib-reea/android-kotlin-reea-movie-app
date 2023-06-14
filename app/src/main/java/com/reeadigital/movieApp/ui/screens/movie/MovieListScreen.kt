@@ -17,14 +17,14 @@ package com.reeadigital.movieapp.ui.screens.movie
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieListDTO
 import com.reeadigital.movieapp.base.UIState
+import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDTO
 import com.reeadigital.movieapp.ui.screens.LoadingScreen
 import com.reeadigital.movieapp.ui.screens.ResultScreen
 
 @Composable
 fun MovieListScreen(
-    movieListUIState: UIState<MovieListDTO>,
+    movieListUIState: UIState<List<MovieDTO>?>,
     modifier: Modifier = Modifier
 ) {
 

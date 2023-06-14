@@ -28,7 +28,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.reeadigital.movieapp.R
-import com.reeadigital.movieapp.ui.screens.movie.MovieDetailScreen
 import com.reeadigital.movieapp.ui.screens.movie.MovieListScreen
 import com.reeadigital.movieapp.ui.screens.movie.MovieViewModel
 

@@ -21,6 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.reeadigital.movieapp.base.UIState
+import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDTO
 import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
 import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieListDTO
 import com.reeadigital.movieapp.domain.MovieUseCase.MovieUseCase
@@ -34,7 +35,7 @@ import javax.inject.Inject
 class MovieViewModel  @Inject constructor(
     private val movieUseCase: MovieUseCase
 ) : ViewModel() {
-   var movieListUIState: UIState<MovieListDTO> by mutableStateOf(UIState.Loading)
+   var movieListUIState: UIState<List<MovieDTO>?> by mutableStateOf(UIState.Loading)
     private set
     var movieDetailUIState: UIState<MovieDetailDTO> by mutableStateOf(UIState.Loading)
    private set
@@ -61,7 +62,7 @@ class MovieViewModel  @Inject constructor(
         viewModelScope.launch {
             movieListUIState= try {
                 val movieListFlow= movieUseCase.getMovieList("open")
-                val ml= movieListFlow.toList()
+               val ml= movieListFlow.toList()
                 val movieList= ml[0]
                 UIState.Success(movieList)
             }catch(e: IOException){

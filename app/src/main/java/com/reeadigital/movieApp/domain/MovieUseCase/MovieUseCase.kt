@@ -1,5 +1,6 @@
 package com.reeadigital.movieapp.domain.MovieUseCase
 
+import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDTO
 import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
 import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieListDTO
 import com.reeadigital.movieapp.data.repository.MovieRepository
@@ -7,6 +8,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -19,14 +21,13 @@ class MovieUseCase @Inject constructor(
 ) {
 
     suspend fun getMovieDetail(detailID: String): Flow<MovieDetailDTO> =flow{
-        //withContext(defaultDispatcher){
-            val  movieDetail=movieRepository.getMovieDetail(detailID)
-            emit(movieDetail)
-        //}
-    }
+        val  movieDetail=movieRepository.getMovieDetail(detailID)
+        emit(movieDetail)
+    }.flowOn(Dispatchers.Default)
 
-    suspend fun getMovieList(searchKey: String): Flow<MovieListDTO> =flow{
-        val  movieList=movieRepository.getMovieList(searchKey)
+    suspend fun getMovieList(searchKey: String): Flow<List<MovieDTO>?> =flow{
+        val  movieListResult=movieRepository.getMovieList(searchKey)
+        val movieList=movieListResult.Search
         emit(movieList)
-    }
+    }.flowOn(Dispatchers.Default)
 }
