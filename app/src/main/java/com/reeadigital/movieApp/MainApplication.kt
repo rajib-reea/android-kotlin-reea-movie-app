@@ -6,5 +6,10 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class MainApplication: Application() {
-    val database: MovieDatabase by lazy { MovieDatabase.getDatabase(this)}
+    //not needed this lifecycle event though.
+    override fun onCreate() {
+        super.onCreate()
+        val database: MovieDatabase by lazy { MovieDatabase.getDatabase(this)}
+    }
+
 }
