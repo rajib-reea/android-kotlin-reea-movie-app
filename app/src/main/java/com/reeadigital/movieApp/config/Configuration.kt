@@ -1,4 +1,4 @@
-package com.reeadigital.movieapp.config
+package com.reeadigital.movieApp.config
 
 class Configuration {
     companion object{

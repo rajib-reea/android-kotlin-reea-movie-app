@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package com.reeadigital.movieapp
+package com.reeadigital.movieApp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import com.reeadigital.movieapp.ui.ReeaMovieApp
-import com.reeadigital.movieapp.ui.theme.ReeaMovieTheme
+import com.reeadigital.movieApp.ui.ReeaMovieApp
+import com.reeadigital.movieApp.ui.theme.ReeaMovieTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

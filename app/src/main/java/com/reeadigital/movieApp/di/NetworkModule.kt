@@ -1,8 +1,8 @@
-package com.reeadigital.movieapp.di
+package com.reeadigital.movieApp.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import com.reeadigital.movieapp.config.Configuration
-import com.reeadigital.movieapp.data.datasource.remote.movie.MovieApiService
+import com.reeadigital.movieApp.config.Configuration
+import com.reeadigital.movieApp.data.datasource.remote.movie.MovieApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

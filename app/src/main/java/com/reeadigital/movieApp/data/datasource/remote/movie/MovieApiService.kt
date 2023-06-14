@@ -1,7 +1,7 @@
-package com.reeadigital.movieapp.data.datasource.remote.movie
+package com.reeadigital.movieApp.data.datasource.remote.movie
 
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieListDTO
+import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieDetailDTO
+import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieListDTO
 import retrofit2.http.GET
 import retrofit2.http.Query
 

@@ -1,7 +1,7 @@
-package com.reeadigital.movieapp.di
+package com.reeadigital.movieApp.di
 
-import com.reeadigital.movieapp.data.datasource.remote.movie.MovieApiService
-import com.reeadigital.movieapp.data.repository.MovieRepository
+import com.reeadigital.movieApp.data.datasource.remote.movie.MovieApiService
+import com.reeadigital.movieApp.data.repository.MovieRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -1,9 +1,9 @@
-package com.reeadigital.movieapp.domain.MovieUseCase
+package com.reeadigital.movieApp.domain.MovieUseCase
 
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDTO
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieListDTO
-import com.reeadigital.movieapp.data.repository.MovieRepository
+import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieDTO
+import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieDetailDTO
+import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieListDTO
+import com.reeadigital.movieApp.data.repository.MovieRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow

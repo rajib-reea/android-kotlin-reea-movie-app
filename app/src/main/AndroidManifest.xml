@@ -18,7 +18,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.INTERNET" />
     <application
-        android:name=".MainApplication"
+        android:name="com.reeadigital.movieApp.MainApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -27,7 +27,7 @@
         android:theme="@style/Theme.ReeaMovieTheme"
         tools:targetApi="32">
         <activity
-            android:name="com.reeadigital.movieapp.MainActivity"
+            android:name="com.reeadigital.movieApp.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.ReeaMovieTheme">
             <intent-filter>

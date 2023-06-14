@@ -13,18 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.reeadigital.movieapp.ui.screens.movie
+package com.reeadigital.movieApp.ui.screens.movie
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.reeadigital.movieapp.base.UIState
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDTO
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieListDTO
-import com.reeadigital.movieapp.domain.MovieUseCase.MovieUseCase
+import com.reeadigital.movieApp.base.UIState
+import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieDTO
+import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieDetailDTO
+import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieListDTO
+import com.reeadigital.movieApp.domain.MovieUseCase.MovieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch

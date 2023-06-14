@@ -2,7 +2,7 @@ package com.reeadigital.movieApp.data.datasource.local
 
 import android.content.Context
 import androidx.room.Database
-import androidx.room.Room
+import androidx.room.Room.databaseBuilder
 import androidx.room.RoomDatabase
 import com.reeadigital.movieApp.data.datasource.local.entity.Movie
 import com.reeadigital.movieApp.data.datasource.local.entity.MovieDetail
@@ -17,7 +17,7 @@ abstract class MovieDatabase: RoomDatabase() {
 
         fun getDatabase(context: Context): MovieDatabase {
             return INSTANCE ?: synchronized(this) {
-                val instance = Room.databaseBuilder(
+                val instance = databaseBuilder(
                     context,
                     MovieDatabase::class.java,
                     "movie_database")

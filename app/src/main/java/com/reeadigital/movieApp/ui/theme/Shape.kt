@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.reeadigital.movieapp.ui.theme
+package com.reeadigital.movieApp.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes

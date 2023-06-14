@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.reeadigital.movieapp.ui.screens.movie
+package com.reeadigital.movieApp.ui.screens.movie
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.reeadigital.movieapp.base.UIState
-import com.reeadigital.movieapp.data.datasource.remote.movie.dto.MovieDetailDTO
-import com.reeadigital.movieapp.ui.screens.LoadingScreen
-import com.reeadigital.movieapp.ui.screens.ResultScreen
+import com.reeadigital.movieApp.base.UIState
+import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieDetailDTO
+import com.reeadigital.movieApp.ui.screens.LoadingScreen
+import com.reeadigital.movieApp.ui.screens.ResultScreen
 
 @Composable
 fun MovieDetailScreen(

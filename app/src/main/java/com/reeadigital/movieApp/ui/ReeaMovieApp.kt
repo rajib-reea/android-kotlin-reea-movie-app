@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.reeadigital.movieapp.ui
+package com.reeadigital.movieApp.ui
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -27,9 +27,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.reeadigital.movieapp.R
-import com.reeadigital.movieapp.ui.screens.movie.MovieListScreen
-import com.reeadigital.movieapp.ui.screens.movie.MovieViewModel
+import com.reeadigital.movieApp.R
+import com.reeadigital.movieApp.ui.screens.movie.MovieListScreen
+import com.reeadigital.movieApp.ui.screens.movie.MovieViewModel
 
 @Composable
 fun ReeaMovieApp(modifier: Modifier = Modifier) {

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.reeadigital.movieapp.ui.screens.movie
+package com.reeadigital.movieApp.ui.screens.movie
 
 
 import androidx.compose.foundation.layout.Box
@@ -23,7 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import com.reeadigital.movieapp.R
+import com.reeadigital.movieApp.R
 
 @Composable
 fun ErrorScreen(modifier: Modifier = Modifier) {

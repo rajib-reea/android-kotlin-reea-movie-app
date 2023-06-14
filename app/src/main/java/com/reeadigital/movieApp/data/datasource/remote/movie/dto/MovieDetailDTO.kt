@@ -1,4 +1,4 @@
-package com.reeadigital.movieapp.data.datasource.remote.movie.dto
+package com.reeadigital.movieApp.data.datasource.remote.movie.dto
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
