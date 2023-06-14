@@ -31,6 +31,6 @@ data class MovieDetail(
     @ColumnInfo(name = "website") val Website: String?,
     @ColumnInfo(name = "response") val Response: String?,
     @ColumnInfo(name = "is_active") val IsActive: Boolean,
-    @ColumnInfo(defaultValue = "CURRENT_TIMESTAMP") val created: String,
-    @ColumnInfo(defaultValue = "CURRENT_TIMESTAMP") val modified: String,
+    @ColumnInfo(defaultValue = "CURRENT_TIMESTAMP") val created: String?,
+    @ColumnInfo(defaultValue = "CURRENT_TIMESTAMP") val modified: String?,
 )

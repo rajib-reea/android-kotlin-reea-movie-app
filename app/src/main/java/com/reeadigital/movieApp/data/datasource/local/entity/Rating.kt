@@ -11,6 +11,6 @@ data class Rating(
     @ColumnInfo(name = "source") val Source:String?,
     @ColumnInfo(name = "value") val Value:String?,
     @ColumnInfo(name = "is_active") val IsActive: Boolean,
-    @ColumnInfo(defaultValue = "CURRENT_TIMESTAMP") val created: String,
-    @ColumnInfo(defaultValue = "CURRENT_TIMESTAMP") val modified: String,
+    @ColumnInfo(defaultValue = "CURRENT_TIMESTAMP") val created: String?,
+    @ColumnInfo(defaultValue = "CURRENT_TIMESTAMP") val modified: String?,
 )
