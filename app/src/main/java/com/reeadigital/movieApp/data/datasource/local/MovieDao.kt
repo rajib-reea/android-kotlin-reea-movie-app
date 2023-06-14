@@ -10,31 +10,31 @@ import com.reeadigital.movieApp.data.datasource.local.entity.Rating
 
 @Dao
 interface MovieDao {
-//    //insert
-//    @Insert
-//    fun insertMovie(vararg movie: Movie)
-//    @Insert
-//    fun insertMovieDetail(vararg movieDetail: MovieDetail)
-//    @Insert
-//    fun insertRating(vararg rating: Rating)
-//    //delete
-//    @Delete
-//    fun deleteMovie(movie: Movie)
-//    @Delete
-//    fun deleteMovieDetail( movieDetail:MovieDetail)
-//    @Delete
-//    fun deleteRating( rating:Rating)
+    //insert
+    @Insert
+    suspend fun insertMovie(vararg movie: Movie)
+    @Insert
+    suspend fun insertMovieDetail(vararg movieDetail: MovieDetail)
+    @Insert
+    suspend fun insertRating(vararg rating: Rating)
+    //delete
+    @Delete
+    suspend fun deleteMovie(movie: Movie)
+    @Delete
+    suspend fun deleteMovieDetail( movieDetail:MovieDetail)
+    @Delete
+    suspend fun deleteRating( rating:Rating)
     //query
     @Query("SELECT * FROM movie_details  ORDER BY created ASC")
-    fun getAll(): List<MovieDetail>
+    suspend fun getAll(): List<MovieDetail>
     @Query("SELECT * FROM movie_details WHERE  genre=:genre ORDER BY created ASC")
-    fun getByGenre(genre: String): List<MovieDetail>
+    suspend fun getByGenre(genre: String): List<MovieDetail>
     @Query("SELECT * FROM movie_details WHERE  country=:country ORDER BY created ASC")
-    fun getByCountry(country:String): List<MovieDetail>
+    suspend fun getByCountry(country:String): List<MovieDetail>
     @Query("SELECT * FROM movie_details WHERE  language=:language ORDER BY created ASC")
-    fun getByLanguage(language: String): List<MovieDetail>
+    suspend fun getByLanguage(language: String): List<MovieDetail>
     @Query("SELECT * FROM movie_details WHERE  year=:year ORDER BY created ASC")
-    fun getByYear(year: String): List<MovieDetail>
+    suspend fun getByYear(year: String): List<MovieDetail>
     @Query("SELECT * FROM movie_details WHERE  director=:director ORDER BY created ASC")
-    fun getByDirector(director:String): List<MovieDetail>
+    suspend fun getByDirector(director:String): List<MovieDetail>
 }
