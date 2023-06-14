@@ -5,8 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.sql.Timestamp
 
-@Entity(tableName = "movie_lists")
-data class MovieList(
+@Entity(tableName = "movies")
+data class Movie(
     @PrimaryKey val id: Int,
     @ColumnInfo(name = "title") val Title: String?,
     @ColumnInfo(name = "year") val Year: String?,

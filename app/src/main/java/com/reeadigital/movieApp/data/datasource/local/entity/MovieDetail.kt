@@ -22,7 +22,6 @@ data class MovieDetail(
     @ColumnInfo(name = "country") val Country: String?,
     @ColumnInfo(name = "poster") val Poster: String?,
     @ColumnInfo(name = "awards") val Awards: String?,
-  //  @ColumnInfo(name = "ratings") val Ratings: List<RatingDTO>?,
     @ColumnInfo(name = "imdb_rating") val IMDB_Rating: String?,
     @ColumnInfo(name = "imdb_votes") val IMDB_Votes: String?,
     @ColumnInfo(name = "imdb_id") val  IMDB_ID: String?,
