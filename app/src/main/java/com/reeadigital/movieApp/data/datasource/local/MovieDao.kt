@@ -1,28 +1,25 @@
 package com.reeadigital.movieApp.data.datasource.local
 
-import androidx.room.Delete
-import androidx.room.Insert
+import androidx.room.Dao
 import androidx.room.Query
-import com.reeadigital.movieApp.data.datasource.local.entity.Movie
 import com.reeadigital.movieApp.data.datasource.local.entity.MovieDetail
-import com.reeadigital.movieApp.data.datasource.local.entity.Rating
 
-
-interface MovieDAO {
-    //insert
-    @Insert
-    fun insertMovie(movie: Movie)
-    @Insert
-    fun insertMovieDetail( movieDetail: MovieDetail)
-    @Insert
-    fun insertRating( rating:Rating)
-    //delete
-    @Delete
-    fun deleteMovie(movie: Movie)
-    @Delete
-    fun deleteMovieDetail( movieDetail:MovieDetail)
-    @Delete
-    fun deleteRating( rating:Rating)
+@Dao
+interface MovieDao {
+//    //insert
+//    @Insert
+//    fun insertMovie( movie: Movie)
+//    @Insert
+//    fun insertMovieDetail(movieDetail: MovieDetail)
+//    @Insert
+//    fun insertRating(rating:Rating)
+//    //delete
+//    @Delete
+//    fun deleteMovie(movie: Movie)
+//    @Delete
+//    fun deleteMovieDetail( movieDetail:MovieDetail)
+//    @Delete
+//    fun deleteRating( rating:Rating)
     //query
     @Query("SELECT * FROM movie_details  ORDER BY created ASC")
     fun getAll(): List<MovieDetail>

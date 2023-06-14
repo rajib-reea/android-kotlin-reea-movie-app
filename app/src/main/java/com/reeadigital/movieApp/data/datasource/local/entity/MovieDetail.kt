@@ -3,7 +3,6 @@ package com.reeadigital.movieApp.data.datasource.local.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.sql.Timestamp
 
 @Entity(tableName = "movie_details")
 data class MovieDetail(
@@ -32,6 +31,6 @@ data class MovieDetail(
     @ColumnInfo(name = "website") val Website: String?,
     @ColumnInfo(name = "response") val Response: String?,
     @ColumnInfo(name = "is_active") val IsActive: Boolean,
-    val created: Timestamp,
-    val modified: Timestamp,
+    @ColumnInfo(defaultValue = "CURRENT_TIMESTAMP") val created: String,
+    @ColumnInfo(defaultValue = "CURRENT_TIMESTAMP") val modified: String,
 )
