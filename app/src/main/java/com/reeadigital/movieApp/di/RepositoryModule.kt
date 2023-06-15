@@ -1,5 +1,6 @@
 package com.reeadigital.movieApp.di
 
+import com.reeadigital.movieApp.data.datasource.local.MovieDao
 import com.reeadigital.movieApp.data.datasource.remote.movie.MovieApiService
 import com.reeadigital.movieApp.data.repository.MovieRepository
 import dagger.Module
@@ -14,5 +15,5 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideMovieRepository(movieApi: MovieApiService): MovieRepository = MovieRepository(movieApi)
+    fun provideMovieRepository(movieApi: MovieApiService, movieDao: MovieDao): MovieRepository = MovieRepository(movieApi, movieDao)
 }

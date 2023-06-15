@@ -1,6 +1,7 @@
 package com.reeadigital.movieApp.data.repository
 
 import com.reeadigital.movieApp.MainApplication
+import com.reeadigital.movieApp.data.datasource.local.MovieDao
 import com.reeadigital.movieApp.data.datasource.local.MovieDatabase
 import com.reeadigital.movieApp.data.datasource.local.entity.Movie
 import com.reeadigital.movieApp.data.datasource.remote.movie.MovieApiService
@@ -11,7 +12,8 @@ import java.time.LocalDateTime
 import javax.inject.Inject
 
 class MovieRepository @Inject constructor(
-    private val movieApi: MovieApiService
+    private val movieApi: MovieApiService,
+    private val movieDao: MovieDao
     ){
         private fun convertToEntity(movieDTO: MovieDTO): Movie {
             return Movie(
@@ -32,14 +34,12 @@ class MovieRepository @Inject constructor(
 
 
     suspend fun getMovieList(searchKey: String): MovieListDTO {
-        // val movieInstance=MovieDatabase.getDatabase(MainApplication())
         val movieList= movieApi.getMovieList(searchKey, "97edfc1b")
         val  movies=movieList.Search
-
         for (movieDTO in movies!!)  {
             //need to convert DTO object to ENTITY object
             val movie=convertToEntity(movieDTO)
-           // movieInstance.movieDao().insertMovie(movie)
+            movieDao.insertMovie(movie )
         }
         return movieList;
     }
