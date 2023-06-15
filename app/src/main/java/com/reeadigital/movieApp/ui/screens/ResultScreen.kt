@@ -31,6 +31,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -41,6 +42,7 @@ import coil.compose.AsyncImage
 import com.reeadigital.movieApp.base.CustomColor
 import com.reeadigital.movieApp.ui.screens.movie.MovieViewModel
 import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieDetailDTO
+import com.reeadigital.movieApp.ui.RatingBar
 
 @Composable
 fun ResultScreen(movieViewModel: MovieViewModel, detailID: String, modifier: Modifier = Modifier) {
@@ -141,8 +143,9 @@ private fun MovieDetailHeader(
         Spacer(modifier = Modifier.height(8.dp))
 
 //        RatingBar(
-//            rating = (movie?.IMDB_Votes ?: 0f) / 2f,
-//            color = Color(palette?.vibrantSwatch?.rgb ?: 0),
+//            rating=0f,
+//            //rating = (movie?.IMDB_Votes?.toFloat() ?: 0f) / 2f,
+//            color = Color((Color?.Green?.alpha ?: 0) as Int),
 //            modifier = Modifier
 //                .height(15.dp)
 //                .align(Alignment.CenterHorizontally)
