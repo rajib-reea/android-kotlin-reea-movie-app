@@ -27,8 +27,7 @@ class MovieRepository @Inject constructor(
                 modified = LocalDateTime.now().toString()
             )
         }
-        suspend fun getMovieDetail(detailID: String): MovieDetailDTO{
-            //always get from the database
+        suspend fun getMovieDetail(detailID: String): MovieDetailDTO {
             return movieApi.getMovieDetail(detailID, "97edfc1b")
         }
 

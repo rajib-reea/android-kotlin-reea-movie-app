@@ -25,7 +25,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ReeaMovieTheme"
-        tools:targetApi="32">
+        tools:targetApi="33">
         <activity
             android:name="com.reeadigital.movieApp.MainActivity"
             android:exported="true"

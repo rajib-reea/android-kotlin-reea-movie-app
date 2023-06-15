@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.reeadigital.movieApp.R
+import com.reeadigital.movieApp.ui.screens.movie.MovieDetailScreen
 import com.reeadigital.movieApp.ui.screens.movie.MovieListScreen
 import com.reeadigital.movieApp.ui.screens.movie.MovieViewModel
 
@@ -44,8 +45,8 @@ fun ReeaMovieApp(modifier: Modifier = Modifier) {
             color = MaterialTheme.colors.background
         ) {
             val movieViewModel: MovieViewModel = viewModel()
-            //MovieDetailScreen( movieDetailUIState = movieViewModel.movieDetailUIState )
-            MovieListScreen(movieListUIState = movieViewModel.movieListUIState)
+            MovieDetailScreen( movieViewModel, movieDetailTextUIState = movieViewModel.movieDetailTextUIState )
+            //MovieListScreen(movieViewModel, movieListUIState = movieViewModel.movieListUIState)
         }
     }
 }

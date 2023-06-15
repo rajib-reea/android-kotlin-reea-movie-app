@@ -23,9 +23,10 @@ import androidx.lifecycle.viewModelScope
 import com.reeadigital.movieApp.base.UIState
 import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieDTO
 import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieDetailDTO
-import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieListDTO
 import com.reeadigital.movieApp.domain.MovieUseCase.MovieUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import okio.IOException
@@ -38,13 +39,28 @@ class MovieViewModel  @Inject constructor(
    var movieListUIState: UIState<List<MovieDTO>?> by mutableStateOf(UIState.Loading)
     private set
     var movieDetailUIState: UIState<MovieDetailDTO> by mutableStateOf(UIState.Loading)
+    var movieDetailTextUIState: UIState<String> by mutableStateOf(UIState.Loading)
    private set
 
-    init {
-        getMovieList()
-        getMovieDetail()
+    private val movieIdSharedFlow: MutableSharedFlow<String> = MutableSharedFlow(replay = 1)
+    val movieFlow = movieIdSharedFlow.flatMapLatest {
+        movieUseCase.getMovieDetail(it)
     }
 
+
+ init {
+           // getMovieList()
+           //getMovieDetail()
+            fetchMovieDetailById("tt3896198")
+ }
+fun fetchMovieDetailById(id: String) =viewModelScope.launch {
+        movieDetailTextUIState=try{
+             movieIdSharedFlow.tryEmit(id)
+            UIState.Success(id)
+        }catch (e:IOException){
+            UIState.Error(e)
+        }
+    }
     private fun getMovieDetail() = viewModelScope.launch {
         movieDetailUIState= try {
             val movieDetailFlow=movieUseCase.getMovieDetail("tt3896198")

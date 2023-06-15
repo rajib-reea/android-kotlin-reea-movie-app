@@ -24,12 +24,16 @@ import com.reeadigital.movieApp.ui.screens.ResultScreen
 
 @Composable
 fun MovieDetailScreen(
-    movieDetailUIState: UIState<MovieDetailDTO>,
+    movieViewModel: MovieViewModel,
+    //movieDetailUIState: UIState<MovieDetailDTO>,
+    movieDetailTextUIState: UIState<String>,
     modifier: Modifier = Modifier
 ) {
-    when (movieDetailUIState) {
+    //when (movieDetailUIState) {
+    when (movieDetailTextUIState) {
         is UIState.Loading -> LoadingScreen(modifier)
-        is UIState.Success -> ResultScreen(movieDetailUIState.data.toString(), modifier)
+        //is UIState.Success -> ResultScreen(movieDetailUIState.data.toString(), modifier)
+        is UIState.Success -> ResultScreen(movieViewModel, movieDetailTextUIState.data.toString(), modifier)
         is UIState.Error -> ErrorScreen(modifier)
     }
 }

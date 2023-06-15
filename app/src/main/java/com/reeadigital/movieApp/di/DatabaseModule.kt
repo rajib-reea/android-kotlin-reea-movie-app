@@ -2,8 +2,6 @@ package com.reeadigital.movieApp.di
 
 import android.content.Context
 import androidx.room.Room.databaseBuilder
-import androidx.room.migration.Migration
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.reeadigital.movieApp.data.datasource.local.MovieDao
 import com.reeadigital.movieApp.data.datasource.local.MovieDatabase
 import dagger.Module
@@ -23,9 +21,7 @@ object  DatabaseModule {
             context.applicationContext,
             MovieDatabase::class.java,
             "movie_db"
-        )//.addMigrations(MIGRATION_1_2).build()
-            .fallbackToDestructiveMigration()
-            .build()
+        ).fallbackToDestructiveMigration().build()
     }
     @Provides
     fun provideMovieDao(movieDatabase: MovieDatabase): MovieDao {

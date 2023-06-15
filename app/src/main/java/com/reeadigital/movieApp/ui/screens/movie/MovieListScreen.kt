@@ -24,13 +24,14 @@ import com.reeadigital.movieApp.ui.screens.ResultScreen
 
 @Composable
 fun MovieListScreen(
+    movieViewModel: MovieViewModel,
     movieListUIState: UIState<List<MovieDTO>?>,
     modifier: Modifier = Modifier
 ) {
 
     when (movieListUIState) {
         is UIState.Loading -> LoadingScreen(modifier)
-        is UIState.Success -> ResultScreen(movieListUIState.data.toString(), modifier)
+        is UIState.Success -> ResultScreen(movieViewModel, movieListUIState.data.toString(), modifier)
         is UIState.Error -> ErrorScreen(modifier)
     }
 }
