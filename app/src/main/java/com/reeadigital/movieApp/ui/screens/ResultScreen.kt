@@ -15,8 +15,8 @@
  */
 package com.reeadigital.movieApp.ui.screens
 
+
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -31,13 +31,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
 import com.reeadigital.movieApp.base.CustomColor
 import com.reeadigital.movieApp.ui.screens.movie.MovieViewModel
 import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieDetailDTO
@@ -45,8 +45,8 @@ import com.reeadigital.movieApp.data.datasource.remote.movie.dto.MovieDetailDTO
 @Composable
 fun ResultScreen(movieViewModel: MovieViewModel, detailID: String, modifier: Modifier = Modifier) {
     val movie: MovieDetailDTO? by  movieViewModel.movieFlow.collectAsState(initial = null)
-    val AnyStateWeCanConsider=0
-    LaunchedEffect(key1 = AnyStateWeCanConsider) {
+    val anyStateWeCanConsider=0
+    LaunchedEffect(key1 = anyStateWeCanConsider) {
         val detailID="tt3896198"
         //WE CAN NOT RUN FROM HERE. THEREFORE WE RUN IT FROM VIEWMODEL INIT().
         // movieViewModel.fetchMovieDetailById(detailID)
@@ -71,12 +71,12 @@ fun ResultScreen(movieViewModel: MovieViewModel, detailID: String, modifier: Mod
 //
 //        Spacer(modifier = Modifier.height(24.dp))
     }
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = modifier.fillMaxSize()
-    ) {
-        Text(detailID)
-    }
+//    Box(
+//        contentAlignment = Alignment.Center,
+//        modifier = modifier.fillMaxSize()
+//    ) {
+//        Text(detailID)
+//    }
 }
 
 
@@ -88,7 +88,15 @@ private fun MovieDetailHeader(
 
     Column {
 
-        //var palette by remember { mutableStateOf<Palette?>(null) }
+       // var palette by remember { mutableStateOf<Palette?>(null) }
+        AsyncImage(
+            model = movie?.Poster,
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxWidth()
+               .height(280.dp)
+                .padding(horizontal = 8.dp)
+        )
 //        NetworkImage(
 //            networkUrl = Api.getBackdropPath(movie?.backdrop_path),
 //            circularReveal = CircularReveal(duration = 300),
