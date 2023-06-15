@@ -8,7 +8,7 @@ import com.reeadigital.movieApp.data.datasource.local.entity.Movie
 import com.reeadigital.movieApp.data.datasource.local.entity.MovieDetail
 import com.reeadigital.movieApp.data.datasource.local.entity.Rating
 
-@Database(entities = [Movie::class, MovieDetail::class, Rating::class], version = 1, exportSchema = true)
+@Database(entities = [Movie::class, MovieDetail::class, Rating::class], version = 2, exportSchema = true)
 abstract class MovieDatabase: RoomDatabase() {
     abstract fun movieDao(): MovieDao
     companion object{
